@@ -1,0 +1,142 @@
+{
+  "en": {
+    "translation": {
+      "welcome": "Welcome",
+      "login": "Login",
+      "logout": "Logout",
+      "chooseLanguage": "Choose Language",
+      "selectPreferredLanguage": "Select your preferred language",
+      "GetStarted": "Get Started",
+      "SelectCropType": "Select Crop Type",
+      "Whatcropsdoyougrow?": "What crops do you grow?",
+      "LandSize": "Land Size",
+      "Howmuchlanddoyouhave?": "How much land do you have?",
+      "Location": "Location",
+      "Whereisyourfarmlocated?": "Where is your farm located?",
+      "UseCurrentLocation": "Use Current Location",
+      "Previous": "Previous",
+      "Next": "Next",
+      "Letshelpyougrowbettercrops!": "Let's help you grow better crops!",
+      "crop": {
+        "wheat": "Wheat",
+        "rice": "Rice",
+        "corn": "Corn",
+        "fruits": "Fruits",
+        "vegetables": "Vegetables",
+        "cotton": "Cotton"
+      }
+    }
+  },
+  "hi": {
+    "translation": {
+      "welcome": "स्वागत है",
+      "login": "लॉगिन",
+      "logout": "लॉगआउट",
+      "chooseLanguage": "भाषा चुनें",
+      "selectPreferredLanguage": "अपनी पसंदीदा भाषा चुनें",
+      "GetStarted": "शुरू करें",
+      "SelectCropType": "फसल का प्रकार चुनें",
+      "Whatcropsdoyougrow?": "आप कौन-कौन सी फसलें उगाते हैं?",
+      "LandSize": "भूमि का आकार",
+      "Howmuchlanddoyouhave?": "आपके पास कितनी जमीन है?",
+      "Location": "स्थान",
+      "Whereisyourfarmlocated?": "आपका खेत कहाँ स्थित है?",
+      "UseCurrentLocation": "वर्तमान स्थान का उपयोग करें",
+      "Previous": "पिछला",
+      "Next": "अगला",
+      "Letshelpyougrowbettercrops!": "आइए आपको बेहतर फसलें उगाने में मदद करें!",
+      "crop": {
+        "wheat": "गेहूँ",
+        "rice": "चावल",
+        "corn": "मक्का",
+        "fruits": "फल",
+        "vegetables": "सब्जियां",
+        "cotton": "कपास"
+      }
+    }
+  },
+  "te": {
+    "translation": {
+      "welcome": "స్వాగతం",
+      "login": "ప్రవేశించండి",
+      "logout": "లాగ్ అవుట్",
+      "chooseLanguage": "భాషని ఎంచుకోండి",
+      "selectPreferredLanguage": "మీకు ఇష్టమైన భాషను ఎంచుకోండి",
+      "GetStarted": "ప్రారంభించండి",
+      "SelectCropType": "పంట రకాన్ని ఎంచుకోండి",
+      "Whatcropsdoyougrow?": "మీరు ఏ పంటలు పెంచుతారు?",
+      "LandSize": "భూమి పరిమాణం",
+      "Howmuchlanddoyouhave?": "మీకు ఎంత భూమి ఉంది?",
+      "Location": "స్థానం",
+      "Whereisyourfarmlocated?": "మీ ఫారం ఎక్కడ ఉంది?",
+      "UseCurrentLocation": "ప్రస్తుత స్థానం ఉపయోగించండి",
+      "Previous": "మునుపటి",
+      "Next": "తరువాత",
+      "Letshelpyougrowbettercrops!": "మీరు మెరుగైన పంటలు పండించడంలో సహాయపడదాం!",
+      "crop": {
+        "wheat": "గోధుమ",
+        "rice": "బియ్యం",
+        "corn": "మక్కజొన్న",
+        "fruits": "ఫలాలు",
+        "vegetables": "కూరగాయలు",
+        "cotton": "పత్తి"
+      }
+    }
+  },
+  "ta": {
+    "translation": {
+      "welcome": "வரவேற்பு",
+      "login": "உள்நுழைவு",
+      "logout": "வெளியேறு",
+      "chooseLanguage": "மொழியைத் தேர்வுசெய்யவும்",
+      "selectPreferredLanguage": "உங்களுக்கு விருப்பமான மொழியைத் தேர்ந்தெடுக்கவும்",
+      "GetStarted": "தொடங்கு",
+      "SelectCropType": "பயிர் வகையைத் தேர்ந்தெடுக்கவும்",
+      "Whatcropsdoyougrow?": "நீங்கள் என்ன பயிர்களை வளர்க்கிறீர்கள்?",
+      "LandSize": "நில அளவு",
+      "Howmuchlanddoyouhave?": "உங்களிடம் எவ்வளவு நிலம் உள்ளது?",
+      "Location": "இடம்",
+      "Whereisyourfarmlocated?": "உங்கள் பண்ணை எங்கு அமைந்துள்ளது?",
+      "UseCurrentLocation": "தற்போதைய இடத்தைப் பயன்படுத்தவும்",
+      "Previous": "முந்தையது",
+      "Next": "அடுத்து",
+      "Letshelpyougrowbettercrops!": "சிறந்த பயிர்களை வளர்க்க உங்களுக்கு உதவுவோம்!",
+      "crop": {
+        "wheat": "கோதுமை",
+        "rice": "அரிசி",
+        "corn": "மக்காச்சோளம்",
+        "fruits": "பழங்கள்",
+        "vegetables": "காய்கறிகள்",
+        "cotton": "பருத்தி"
+      }
+    }
+  },
+  "kn": {
+    "translation": {
+      "welcome": "ಸ್ವಾಗತ",
+      "login": "ಲಾಗಿನ್",
+      "logout": "ಲಾಗ್‌ಔಟ್",
+      "chooseLanguage": "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ",
+      "selectPreferredLanguage": "ನಿಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+      "GetStarted": "ಪ್ರಾರಂಭಿಸಿ",
+      "SelectCropType": "ಬೆಳೆ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+      "Whatcropsdoyougrow?": "ನೀವು ಯಾವ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಯುತ್ತೀರಿ?",
+      "LandSize": "ಭೂಮಿ ಗಾತ್ರ",
+      "Howmuchlanddoyouhave?": "ನಿಮ್ಮಲ್ಲಿ ಎಷ್ಟು ಭೂಮಿ ಇದೆ?",
+      "Location": "ಸ್ಥಳ",
+      "Whereisyourfarmlocated?": "ನಿಮ್ಮ ಫಾರ್ಮ್ ಎಲ್ಲಿದೆ?",
+      "UseCurrentLocation": "ಪ್ರಸ್ತುತ ಸ್ಥಳವನ್ನು ಬಳಸಿ",
+      "Previous": "ಹಿಂದಿನದು",
+      "Next": "ಮುಂದೆ",
+      "Letshelpyougrowbettercrops!": "ಉತ್ತಮ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಯಲು ನಿಮಗೆ ಸಹಾಯ ಮಾಡೋಣ!",
+      "crop": {
+        "wheat": "ಗೋಧಿ",
+        "rice": "ಅಕ್ಕಿ",
+        "corn": "ಮೆಕ್ಕೆಜೋಳ",
+        "fruits": "ಹಣ್ಣುಗಳು",
+        "vegetables": "ತರಕಾರಿಗಳು",
+        "cotton": "ಹತ್ತಿ"
+      }
+    }
+  }
+}
