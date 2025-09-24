@@ -1,0 +1,114 @@
+{
+  "Apple Scab": {
+    "symptoms": [
+      "Olive-green or brown spots on leaves, fruit, and twigs.",
+      "Leaves may become twisted and puckered.",
+      "Fruit lesions become black, corky, and may crack.",
+      "Infected leaves often drop prematurely."
+    ],
+    "cause": "Caused by the fungus Venturia inaequalis, which thrives in cool, wet spring weather. The fungus overwinters in infected leaves on the ground and releases spores during spring rains.",
+    "cure": {
+      "organic": [
+        "Clean up and destroy fallen leaves in the autumn to reduce overwintering spores.",
+        "Prune trees to improve air circulation and allow leaves to dry faster.",
+        "Apply sulfur or copper-based fungicides starting in early spring before blossoms open."
+      ],
+      "chemical": [
+        "Apply fungicides containing Captan or Myclobutanil according to package directions, especially during wet periods from bud-break until mid-summer."
+      ]
+    }
+  },
+  "Apple Black Rot": {
+    "symptoms": [
+      "Firm, brown to black spots on fruit, which may enlarge in a concentric ring pattern.",
+      "Infected fruit shrivels into a black 'mummy'.",
+      "Small, purple spots on leaves that enlarge to form 'frogeye leaf spot'.",
+      "Reddish-brown, sunken cankers on branches."
+    ],
+    "cause": "Caused by the fungus Diplodia seriata (previously Botryosphaeria obtusa). It infects dead wood, cankers, and mummified fruit, releasing spores during wet weather.",
+    "cure": {
+      "organic": [
+        "Prune out dead or diseased branches and cankers during winter dormancy.",
+        "Remove and destroy all mummified fruit from the tree and the ground.",
+        "Maintain tree health with proper watering and fertilization to resist infection."
+      ],
+      "chemical": [
+        "Apply fungicides like Captan or Thiophanate-methyl from silver tip through harvest, especially after events that cause wounds (like hail or pruning)."
+      ]
+    }
+  },
+  "Corn Common Rust": {
+    "symptoms": [
+      "Small, cinnamon-brown, powdery pustules on both upper and lower leaf surfaces.",
+      "Pustules are oval or elongated and scattered across the leaves.",
+      "Can also appear on stalks and husks in severe cases."
+    ],
+    "cause": "Caused by the fungus Puccinia sorghi. Spores are carried by wind over long distances. It's favored by cool temperatures (16-23°C) and high humidity.",
+    "cure": {
+      "organic": [
+        "Plant resistant corn hybrids, which is the most effective management method.",
+        "Avoid dense planting to promote air circulation and reduce humidity within the crop canopy."
+      ],
+      "chemical": [
+        "Foliar fungicides (e.g., containing Pyraclostrobin, Azoxystrobin) can be effective if applied early when rust is first detected, especially on susceptible hybrids."
+      ]
+    }
+  },
+  "Potato Late Blight": {
+    "symptoms": [
+      "Large, dark brown to black lesions on leaves and stems, often appearing water-soaked.",
+      "A white, fuzzy ring of fungal growth may appear on the underside of leaves at the lesion edge, especially in humid conditions.",
+      "Tubers develop a reddish-brown, dry, firm rot under the skin."
+    ],
+    "cause": "Caused by the water mold Phytophthora infestans. It thrives in cool, moist conditions. Spores are spread by wind and rain from infected plants or cull piles.",
+    "cure": {
+      "organic": [
+        "Plant certified disease-free seed potatoes.",
+        "Ensure good air circulation and water the soil, not the foliage.",
+        "Prophylactically apply copper-based fungicides before symptoms appear, especially when cool, wet weather is forecast."
+      ],
+      "chemical": [
+        "Apply fungicides containing Chlorothalonil or Mancozeb. Alternate between different fungicide groups to prevent resistance. Begin applications before disease onset."
+      ]
+    }
+  },
+  "Tomato Late Blight": {
+    "symptoms": [
+      "Large, dark, water-soaked spots on leaves that turn brown/black.",
+      "White fungal growth may appear on the undersides of leaves.",
+      "Stems develop large black lesions.",
+      "Fruit develops large, firm, greasy-looking, dark brown spots."
+    ],
+    "cause": "Same as Potato Late Blight (Phytophthora infestans). It spreads rapidly in cool, wet weather and can destroy an entire crop in a short time.",
+    "cure": {
+      "organic": [
+        "Remove and destroy infected plants immediately (do not compost).",
+        "Ensure wide spacing for air circulation.",
+        "Apply copper-based fungicides or bio-fungicides (Bacillus subtilis) preventatively."
+      ],
+      "chemical": [
+        "Apply protectant fungicides like Mancozeb or Chlorothalonil before the disease starts. Curative fungicides may be needed in a severe outbreak."
+      ]
+    }
+  },
+  "Tomato Yellow Leaf Curl Virus": {
+    "symptoms": [
+      "Stunting of the plant.",
+      "Upward cupping, yellowing, and curling of leaves.",
+      "Leaves become smaller and may feel leathery.",
+      "Significant reduction in flower and fruit production."
+    ],
+    "cause": "A virus (TYLCV) transmitted exclusively by the silverleaf whitefly. The whitefly acquires the virus by feeding on an infected plant and then transmits it to healthy plants.",
+    "cure": {
+      "organic": [
+        "There is no cure for an infected plant; it must be removed and destroyed immediately to prevent spread.",
+        "Control whiteflies by using reflective mulch (silver plastic) or introducing beneficial insects like lacewings.",
+        "Use floating row covers on young plants to prevent whiteflies from reaching them.",
+        "Spray with insecticidal soap or neem oil to manage whitefly populations."
+      ],
+      "chemical": [
+        "Control of the whitefly vector is key. Use systemic insecticides containing Imidacloprid on young, non-fruiting plants. For fruiting plants, use insecticides like spiromesifen."
+      ]
+    }
+  }
+}
