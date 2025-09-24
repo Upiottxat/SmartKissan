@@ -1,58 +1,43 @@
-import * as tf from '@tensorflow/tfjs';
-import { loadGraphModel, loadLabels } from './modelLoader';
-import { preprocessImage } from './imageProcessor';
+import * as FileSystem from 'expo-file-system';
 
-export interface DetectionResult {
-  disease: string;
-  confidence: number;
+// Define a type for the structure of your disease data for better code safety
+export interface DiseaseInfo {
+  symptoms: string[];
+  cause: string;
+  cure: {
+    organic: string[];
+    chemical: string[];
+  };
 }
 
-class OfflineDetector {
-  private model: tf.GraphModel | null = null;
-  private labels: string[] = [];
+class OfflineKnowledgeService {
+  private database: Record<string, DiseaseInfo> | null = null;
 
-  async init(): Promise<void> {
-    if (this.model) return;
-    console.log('Loading offline model...');
-    this.labels = await loadLabels();
-    this.model = await loadGraphModel();
-    console.log('Offline model loaded successfully!');
-  }
-
-  async detectDisease(imageUri: string): Promise<DetectionResult | null> {
-    if (!this.model) {
-      console.warn('Model not loaded yet. Call init() first.');
-      return null;
-    }
+  // Load the entire JSON database from assets into memory
+  async loadDatabase(): Promise<void> {
+    if (this.database) return; // Avoid loading more than once
 
     try {
-      const inputTensor = await preprocessImage(imageUri);
-      const result = this.model.predict(inputTensor) as tf.Tensor;
-      const resultData = await result.data();
+      console.log("Loading offline disease database...");
+    
+      const dbUri = FileSystem.bundleDirectory + 'assets/disease_database.json';
+      const dbJsonString = await FileSystem.readAsStringAsync(dbUri);
+      this.database = JSON.parse(dbJsonString);
+      console.log("Offline database loaded successfully!");
+    } catch (error) {
+      console.error("Failed to load offline disease database:", error);
+    }
+  }
 
-      let maxConfidence = 0;
-      let detectedIndex = -1;
-      resultData.forEach((c, i) => {
-        if (c > maxConfidence) {
-          maxConfidence = c;
-          detectedIndex = i;
-        }
-      });
-
-      tf.dispose([inputTensor, result]);
-
-      if (detectedIndex !== -1 && maxConfidence > 0.6) {
-        return {
-          disease: this.labels[detectedIndex],
-          confidence: maxConfidence,
-        };
-      }
-      return null;
-    } catch (err) {
-      console.error('Error during offline detection:', err);
+  // Get the details for a specific disease by its name
+  getDiseaseInfo(diseaseName: string): DiseaseInfo | null {
+    if (!this.database) {
+      console.warn("Database not loaded yet.");
       return null;
     }
+    return this.database[diseaseName] || null;
   }
 }
 
-export const offlineDetector = new OfflineDetector();
+// Export a singleton instance so the database is only loaded once.
+export const offlineKnowledgeService = new OfflineKnowledgeService();
