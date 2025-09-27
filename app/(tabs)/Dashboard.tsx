@@ -33,6 +33,16 @@ const DashboardMain: React.FC<DashboardScreenProps> = ({ navigation }) => {
   }
   const { userBasicInfo } = storageContext;
 
+    useEffect(()=>{
+      const chappara=async ()=>{
+        console.log("fetching the backend");
+        
+  
+            await fetch("http://172.20.116.244:4000").then(res=>res.json()).then(data=>console.log(data)).catch(err=>console.log(err+"error in fetching the backend "));
+      }
+
+      chappara();
+    },[])
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 60000);
 

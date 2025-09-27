@@ -68,26 +68,38 @@ export const useKrishiAI = () => {
       ? `Important: Your entire response must be in the ${getLangObj(langCode).name} language.`
       : "Important: Detect user's language and respond entirely in that language.";
 
+    interface StreamChatResponseParams {
+      messageText: string;
+      imageAsset?: any;
+      langInstruction: string;
+    }
+
+    interface StreamChatResponseHandlers {
+      onChunk: (streamingText: string) => void;
+      onComplete: (finalText: string) => void;
+      onError: () => void;
+    }
+
     await GeminiService.streamChatResponse(
-      { messageText, imageAsset, langInstruction },
+      { messageText, imageAsset, langInstruction } as StreamChatResponseParams,
       {
-        onChunk: (streamingText) => {
-          setMessages(prev => prev.map(msg => 
-            msg.id === botMessageId ? { ...msg, message: streamingText } : msg
-          ));
-        },
-        onComplete: (finalText) => {
-          setLoading(false);
-          speakMessage(finalText);
-        },
-        onError: () => {
-          setLoading(false);
-          setMessages(prev => prev.map(msg => 
-            msg.id === botMessageId ? { ...msg, message: t('alerts.fallbackError') } : msg
-          ));
-          speakMessage(t('alerts.fallbackError'));
-        }
+      onChunk: (streamingText: string) => {
+        setMessages(prev => prev.map(msg => 
+        msg.id === botMessageId ? { ...msg, message: streamingText } : msg
+        ));
+      },
+      onComplete: (finalText: string) => {
+        setLoading(false);
+        speakMessage(finalText);
+      },
+      onError: () => {
+        setLoading(false);
+        setMessages(prev => prev.map(msg => 
+        msg.id === botMessageId ? { ...msg, message: t('alerts.fallbackError') } : msg
+        ));
+        speakMessage(t('alerts.fallbackError'));
       }
+      } as StreamChatResponseHandlers
     );
   };
   

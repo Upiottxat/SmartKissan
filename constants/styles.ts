@@ -1,4 +1,6 @@
 
+import { Platform, StyleSheet } from 'react-native';
+
 //only for adviosy screen 
 export const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F4F7F2' },

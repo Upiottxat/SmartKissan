@@ -73,6 +73,7 @@ export default function Index({ onComplete }: OnboardingScreenProps) {
     "telangana",
   ];
 
+
   useEffect(() => {
     if (userBasicInfo && userBasicInfo.cropType && userBasicInfo.landSize && userBasicInfo.language && userBasicInfo.location) {
       router.push("/(tabs)/Dashboard");

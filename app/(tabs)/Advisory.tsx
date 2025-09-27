@@ -1,14 +1,11 @@
 import * as ImagePicker from 'expo-image-picker';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
   Platform,
-  StyleSheet,
-  Text,
-  View
+  StyleSheet
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -20,7 +17,7 @@ import MessageList from '../../components/Advisory/MessageList';
 import { styles as commonStyles } from '../../constants/styles';
 import { useAudioRecorder } from '../../hooks/useAudioRecorder';
 import { useKrishiAI } from '../../hooks/useKrishiAI';
-import { offlineDetector } from '../../services/detector/OfflineDetector';
+// import { offlineDetector } from '../../services/detector/OfflineDetector';
 
 // ----------- Types -----------
 interface Message {
@@ -56,9 +53,9 @@ export default function Advisory() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   // Load on mount
-  useEffect(() => {
-    offlineDetector.loadModel();
-  }, []);
+  // useEffect(() => {
+  //   offlineDetector.loadModel();
+  // }, []);
 
   // -------- Camera Capture + Offline Scan ----------
   const handleCameraPress = async () => {
@@ -86,23 +83,21 @@ export default function Advisory() {
       };
       handleAddMessage(userMsg);
 
-      // offline disease detection
-      const detection = await offlineDetector.detectDisease(imageAsset.uri);
-      if (detection) {
-        const botMsg: Message = {
-          id: Date.now() + 1,
-          type: 'bot',
-          message: `The offline scan suggests **${detection.disease}** (confidence ${(detection.confidence * 100).toFixed(
-            0
-          )}%).\n\nWould you like detailed treatment advice?`,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        };
-        handleAddMessage(botMsg);
-        setCurrentMessage(`My plant might have ${detection.disease}. Please provide detailed steps.`);
-      } else {
+      // offline disease detection (commented out)
+      // const detection = await offlineDetector.detectDisease(imageAsset.uri);
+      // if (detection) {
+      //   const botMsg: Message = {
+      //     id: Date.now() + 1,
+      //     type: 'bot',
+      //     message: `The offline scan suggests **${detection.disease}** (confidence ${(detection.confidence * 100).toFixed(0)}%).\n\nWould you like detailed treatment advice?`,
+      //     timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      //   };
+      //   handleAddMessage(botMsg);
+      //   setCurrentMessage(`My plant might have ${detection.disease}. Please provide detailed steps.`);
+      // } else {
         // fallback to online AI
         handleSendMessage(t('chat.defaultQuery') || 'What can you tell me about this plant?', imageAsset);
-      }
+      // }
     }
   };
 
@@ -154,12 +149,6 @@ export default function Advisory() {
           onClose={() => setPreviewImage(null)}
         />
 
-        {loading && (
-          <View style={styles.loadingOverlay}>
-            <ActivityIndicator size="large" color="#4caf50" />
-            <Text style={styles.loadingText}>{t('common.loading') || 'Analyzing...'}</Text>
-          </View>
-        )}
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
