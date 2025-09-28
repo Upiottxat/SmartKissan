@@ -1,9 +1,9 @@
 
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, ViewStyle } from 'react-native';
 
 //only for adviosy screen 
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F4F7F2' },
+  container: { flex: 1, backgroundColor: '#F4F7F2' } as ViewStyle,
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#346E3D', paddingHorizontal: 16, paddingVertical: 12, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 },
   headerTitle: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
   headerSub: { color: '#E1F0D7', fontSize: 13, marginTop: -2 },
