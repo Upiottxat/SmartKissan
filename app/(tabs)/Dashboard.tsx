@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SceneMap, TabView } from 'react-native-tab-view';
+import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 const initialLayout = { width: Dimensions.get('window').width };
 
 /**
@@ -52,13 +52,19 @@ export default function Dashboard() {
       <DashboardHeader />
 
       {/* Tab view for navigating between dashboard screens */}
-      <TabView
+           <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
-        renderTabBar={renderTabBar} // Use the custom tab bar
-        tabBarPosition="bottom" // More accessible at the bottom
+        renderTabBar={props => (
+          <TabBar
+            {...props}
+            style={{ backgroundColor: '#22c55e' }}
+            indicatorStyle={{ backgroundColor: 'white' }}
+            labelStyle={{ fontWeight: '600' }}
+          />
+        )}
       />
     </SafeAreaView>
   );

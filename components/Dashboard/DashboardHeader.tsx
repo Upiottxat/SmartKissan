@@ -1,27 +1,47 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ProfileModel from '../models/ProfileModel';
 
 /**
  * @description Header component for the dashboard screen. Displays a greeting,
  * season info, and a profile icon.
  */
 const DashboardHeader = () => {
-  // Dummy handler for profile press
+  const [showProfileModel, setShowProfileModel] = useState(false)
   const handleProfilePress = () => {
-    console.log('Profile icon pressed');
+    setShowProfileModel((prev)=>!prev)
   };
 
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <View>
-          <Text style={styles.greeting}>Good Morning, राम जी! 🌅</Text>
+          <Text style={styles.greeting}>Good Morning, राम-राम जी! 🌅</Text>
           <Text style={styles.seasonInfo}>Kharif Season • Day 45</Text>
         </View>
         <TouchableOpacity style={styles.profileContainer} onPress={handleProfilePress}>
           <Ionicons name="person-circle-outline" size={32} color="white" />
         </TouchableOpacity>
+        
+        <Modal
+          animationType='slide'
+          transparent={true}
+          visible={showProfileModel}
+          onRequestClose={()=>{
+            handleProfilePress()
+          }}
+
+        >
+          <View style={styles.modalContainer}>
+            <TouchableOpacity style={styles.backButton} onPress={() => setShowProfileModel(false)}>
+              <Ionicons name="arrow-back" size={28} color="#222" />
+            </TouchableOpacity>
+
+            <ProfileModel />
+          </View>
+        </Modal>
+
       </View>
       <View style={styles.quickStatus}>
         <View style={styles.statusItem}>
@@ -86,6 +106,25 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white',
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  backButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 10,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 4,
+    elevation: 2,
+  },
+
+
 });
 
 export default DashboardHeader;
