@@ -1,14 +1,15 @@
 import { StorageContext } from '@/Context/StorageContext';
+import useWeather from '@/hooks/useWheather';
 import React, { useContext } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AdvisoryCard from './AdvisoryCard';
 import CropHealthCard from './CropHealthCard';
 import MarketPriceCard from './MarketPriceCard';
+import OrderExpert from './OrderExpert';
 import ProgressCard from './ProgressCard';
 import QuickActions from './QuickActions';
 import WeatherCard from './WeatherCard';
-import useWeather from '@/hooks/useWheather';
 
 /**
  * @description This screen displays the main dashboard content, including weather,
@@ -33,6 +34,7 @@ const DashboardMainScreen = () => {
           location={userBasicInfo?.location || 'N/A'}
         />
         <CropHealthCard />
+        <OrderExpert/>
         <MarketPriceCard />
         <AdvisoryCard />
         <ProgressCard />
