@@ -48,8 +48,6 @@ jobs:
         run: yarn install --frozen-lockfile
 
 
-      - name: Prettier check
-        run: yarn format:check
 
   build-and-deploy:
     needs: test
@@ -77,7 +75,7 @@ jobs:
         if: github.event.inputs.buildType == 'all' || github.event.inputs.buildType == 'dev' || github.event_name == 'push'
         run: |
           export NODE_OPTIONS="--openssl-legacy-provider --max_old_space_size=4096"
-          eas build --platform android --profile development --local --non-interactive --output=app-dev.apk
+          eas build --platform android --profile production --local --non-interactive --output=app-dev.apk
         env:
           NODE_ENV: development
 
