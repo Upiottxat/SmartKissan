@@ -3986,6 +3986,13 @@ expo-modules-core@3.0.17:
   dependencies:
     invariant "^2.2.4"
 
+expo-modules-core@^3.0.18:
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-3.0.18.tgz#5a3f6e6b2087ef4d65ce62c8465509ba7401dc2f"
+  integrity sha512-9JPnjlXEFaq/uACZ7I4wb/RkgPYCEsfG75UKMvfl7P7rkymtpRGYj8/gTL2KId8Xt1fpmIPOF57U8tKamjtjXg==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-navigation-bar@~4.2.8:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/expo-navigation-bar/-/expo-navigation-bar-4.2.8.tgz#6450500c2939454d53b637dd6d1fc6a850b6dfdd"
