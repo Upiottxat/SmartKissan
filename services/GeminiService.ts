@@ -37,8 +37,8 @@ interface StreamRequestPayload {
 
 // --- Configuration ---
 // Use your deployed backend URL for production or local IP for development.
-// const BACKEND_URL = 'https://smart-crop-advisory-backend-5yqc.vercel.app/api/krishimitra/chat';
-const BACKEND_URL = 'http://172.20.116.244:4000/api/krishimitra/chat';
+const BACKEND_URL = 'https://smart-crop-advisory-backend-4qgs.onrender.com/api/krishimitra/chat';
+// const BACKEND_URL = 'http://172.20.116.244:4000/api/krishimitra/chat';
 
 
 /**

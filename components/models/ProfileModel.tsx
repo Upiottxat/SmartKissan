@@ -2,6 +2,7 @@ import { StorageContext } from '@/Context/StorageContext';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
 import {
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
   Switch,
@@ -12,6 +13,7 @@ import {
 
 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import EditScreenInfo from '../EditScreenInfo';
 interface Achievement {
   id: number;
   name: string;
@@ -55,8 +57,17 @@ interface Activity {
   ];
 
 
-export default function Profile() {
-  const{userBasicInfo}=useContext(StorageContext)
+export default function ProfileModel() {
+  const { userBasicInfo } = useContext(StorageContext) ?? {};
+  if (!userBasicInfo) {
+    // You can render a loading state or fallback UI here
+    return (
+      <SafeAreaView style={styles.container}>
+        <EditScreenInfo path='Componenets/ProfileModel'></EditScreenInfo>
+      <ActivityIndicator>Just a Sec</ActivityIndicator>
+      </SafeAreaView>
+    );
+  }
   
   const getInitials = (name: string) => {
     return name

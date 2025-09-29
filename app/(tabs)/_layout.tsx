@@ -30,9 +30,9 @@ export default function TabLayout() {
             case 'Community':
               iconName = focused ? 'people' : 'people-outline';
               break;
-            case 'Profile':
-                iconName = focused ? 'person' : 'person-outline';
-                break;
+      case 'Store':
+        iconName = focused ? 'storefront' : 'storefront-outline';
+        break;
             default:
               iconName = 'home-outline';
           }
@@ -60,7 +60,7 @@ export default function TabLayout() {
       <Tabs.Screen name="Advisory" />
       <Tabs.Screen name="Market" />
        <Tabs.Screen name="Community" />
-      <Tabs.Screen name="Profile" />
+      <Tabs.Screen name="Store" />
     </Tabs>
   );
 }

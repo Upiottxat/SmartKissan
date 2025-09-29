@@ -3,7 +3,6 @@ import { StorageContext } from '@/Context/StorageContext';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useContext, useEffect, useState } from 'react';
-
 import {
   Animated,
   Dimensions,
@@ -15,6 +14,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+
+
 import useWeather from "../../hooks/useWheather";
 
 interface DashboardScreenProps {
@@ -27,7 +28,7 @@ const DashboardMain: React.FC<DashboardScreenProps> = ({ navigation }) => {
   const animatedValue = new Animated.Value(0);
   const storageContext = useContext(StorageContext);
   const { weatherData, loading, error, fetchWeather } = useWeather();
-  
+
   if (!storageContext) {
     throw new Error("StorageContext must be used within a StorageProvider");
   }
@@ -329,6 +330,7 @@ export default function DashboardTabs() {
     recommendation: CropRecommendation,
   });
 
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -337,9 +339,11 @@ export default function DashboardTabs() {
             <Text style={styles.greeting}>Good Morning, राम जी! 🌅</Text>
             <Text style={styles.seasonInfo}>Kharif Season • Day 45</Text>
           </View>
-          <View style={styles.profileContainer}>
+          <TouchableOpacity style={styles.profileContainer} onPress={() => {
+            setShowProfileModel((prev)=>!prev);
+          }}>
             <Ionicons name="person" size={24} color="white" />
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.quickStatus}>
