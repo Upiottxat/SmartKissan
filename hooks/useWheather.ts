@@ -1,6 +1,6 @@
 // hooks/useWeather.ts
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { StorageContext } from '../Context/StorageContext';
+import { StorageContext, WeatherData } from '../Context/StorageContext';
 
 interface ForecastListItem {
   dt: number;
@@ -8,18 +8,15 @@ interface ForecastListItem {
   weather: { description: string; icon: string }[];
   dt_txt: string;
 }
-interface WeatherData {
-  list: ForecastListItem[];
-}
+// WeatherData is now imported from StorageContext
 
 export default function useWeather() {
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const storageContext = useContext(StorageContext);
   if (!storageContext) throw new Error('useWeather must be used within a StorageProvider');
-  const { userBasicInfo } = storageContext;
+  const { userBasicInfo, weatherData, setWeatherData ,lastWeatherUpdate} = storageContext;
 
   const API_KEY = process.env.EXPO_PUBLIC_WEATHER_API_KEY;
 
@@ -38,19 +35,23 @@ export default function useWeather() {
       );
       if (!res.ok) throw new Error('Weather data not found.');
       const data: WeatherData = await res.json();
-      setWeatherData(data);
+      setWeatherData(data); // Save to context (and AsyncStorage)
     } catch (err: any) {
-      if (err.name !== 'AbortError') setError(err.message);
+      if (err.name !== 'AbortError') {
+        setError(err.message);
+      }
+      // If fetch fails, keep using cached weatherData from context
     } finally {
       setLoading(false);
     }
 
     return () => controller.abort();
-  }, [userBasicInfo?.locationCoordinates, API_KEY]);
+  }, [userBasicInfo?.locationCoordinates, API_KEY, setWeatherData]);
 
   useEffect(() => {
+    // Only fetch if online, otherwise rely on cached data
     fetchWeather();
   }, [fetchWeather]);
 
-  return { weatherData, loading, error, refetch: fetchWeather };
+  return { weatherData, loading, error, refetch: fetchWeather ,lastWeatherUpdate};
 }

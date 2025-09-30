@@ -17,7 +17,7 @@ import WeatherCard from './WeatherCard';
  */
 const DashboardMainScreen = () => {
   const storageContext = useContext(StorageContext);
-  const { weatherData, loading, error } = useWeather();
+  const { weatherData, loading, error,lastWeatherUpdate } = useWeather();
 
   if (!storageContext) {
     throw new Error('StorageContext must be used within a StorageProvider');
@@ -32,6 +32,7 @@ const DashboardMainScreen = () => {
           error={error}
           weatherData={weatherData}
           location={userBasicInfo?.location || 'N/A'}
+          lastWeatherUpdate={lastWeatherUpdate}
         />
         <CropHealthCard />
         <OrderExpert/>

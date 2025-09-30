@@ -7,6 +7,7 @@ interface WeatherCardProps {
   error: string | null;
   weatherData: any; // Consider creating a specific type for this
   location: string;
+  lastWeatherUpdate: string | null;
 }
 
 // Helper to get a weather icon based on the weather condition ID
@@ -21,8 +22,9 @@ const getWeatherIcon = (weatherId: number): string => {
 /**
  * @description A card component to display the 5-day weather forecast.
  */
-const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, location }) => {
+const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, location,lastWeatherUpdate }) => {
   // useMemo will re-calculate the forecast only when weatherData changes
+       console.log("last updated at ",lastWeatherUpdate)
   const fiveDayForecast = useMemo(() => {
     if (!weatherData?.list) return [];
 
@@ -80,6 +82,18 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, 
         <Text style={styles.cardLocation}>📍 {location}</Text>
       </View>
       {renderContent()}
+      <View style={styles.TimeStamp} >
+    <Text style={styles.TimeStampText} >
+      {
+        lastWeatherUpdate
+          ? (new Date(lastWeatherUpdate).getTime() - Date.now() < 0
+              ? `✔️ Last updated at ${new Date(lastWeatherUpdate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+              : "Updating...")
+          : "Updating..."
+      }
+    </Text>
+       
+      </View>
     </View>
   );
 };
@@ -147,6 +161,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6b7280',
   },
+  TimeStamp: {
+    marginTop: 10,
+    alignItems: 'flex-end',
+  
+  },
+  TimeStampText:{
+    fontSize: 10,
+    color:'grey'
+  }
 });
 
 export default WeatherCard;
