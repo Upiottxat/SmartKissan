@@ -20,7 +20,9 @@
         "NSMicrophoneUsageDescription": "This app uses the microphone for voice input and audio recording.",
         "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select and upload images.",
         "NSPhotoLibraryAddUsageDescription": "This app saves images to your photo library.",
-        "NSLocationWhenInUseUsageDescription": "This app uses your location to provide weather and location-based advice."
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to provide weather and location-based advice.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app may need continuous location access for field advisory.",
+        "NSLocationAlwaysUsageDescription": "This app uses your location to improve recommendations and advisory."
       }
     },
     "android": {
@@ -35,8 +37,14 @@
         "WRITE_EXTERNAL_STORAGE",
         "ACCESS_MEDIA_LOCATION",
         "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
+        "ACCESS_COARSE_LOCATION",
+        "INTERNET",
+        "WAKE_LOCK",
+        "FOREGROUND_SERVICE",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED"
       ],
+      "usesCleartextTraffic": true,
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.upiot.SmartCropAdvisorySystem"
