@@ -65,6 +65,7 @@ jobs:
       - name: Install dependencies & EAS CLI
         run: |
           yarn install --frozen-lockfile
+          yarn postinstall
           yarn global add eas-cli@latest
 
       - name: Verify EAS CLI
