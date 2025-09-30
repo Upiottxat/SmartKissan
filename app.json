@@ -58,7 +58,7 @@
     "plugins": [
       "expo-router",
       "expo-background-task",
-      "withAppComponentFactory"
+      "./withAppComponentFactory"
     ],
     "experiments": {
       "typedRoutes": true
