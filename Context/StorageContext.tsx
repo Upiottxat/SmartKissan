@@ -71,7 +71,7 @@ export const StorageProvider = ({ children }: StorageProviderProps) => {
       const now = new Date().toISOString();
       setLastWeatherUpdate(now);
       AsyncStorage.setItem("lastWeatherUpdate", now);
-      console.log("weather data changed to ", weatherData, "at", now);
+      // console.log("weather data changed to ", weatherData, "at", now);
     }
   }, [weatherData]);
 

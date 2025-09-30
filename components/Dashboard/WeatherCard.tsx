@@ -52,12 +52,12 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, 
   }, [weatherData]);
 
   const renderContent = () => {
-    if (loading) {
-      return <ActivityIndicator size="large" color="#22c55e" style={styles.centered} />;
-    }
-    if (error) {
-      return <Text style={styles.errorText}>Error: {error}</Text>;
-    }
+    // if (loading) {
+    //   return <ActivityIndicator size="large" color="#c" style={styles.centered} />;
+    // }
+    // if (error) {
+    //   return <Text style={styles.errorText}>Error: {error}</Text>;
+    // }
     return (
       <View style={styles.weatherGrid}>
         {fiveDayForecast.map((weather, index) => (
@@ -83,7 +83,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, 
       </View>
       {renderContent()}
       <View style={styles.TimeStamp} >
-    <Text style={styles.TimeStampText} >
+        {loading?<ActivityIndicator size={10} color={"#22c55e"}></ActivityIndicator>: <Text style={styles.TimeStampText} >
       {
         lastWeatherUpdate
           ? (new Date(lastWeatherUpdate).getTime() - Date.now() < 0
@@ -91,7 +91,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ loading, error, weatherData, 
               : "Updating...")
           : "Updating..."
       }
-    </Text>
+    </Text>}
+   
        
       </View>
     </View>
