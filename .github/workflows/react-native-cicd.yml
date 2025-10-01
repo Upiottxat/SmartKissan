@@ -17,7 +17,7 @@ on:
         default: all
         type: choice
         options:
-          - dev
+          # - dev
           - prod-apk
           - prod-aab
           - all
