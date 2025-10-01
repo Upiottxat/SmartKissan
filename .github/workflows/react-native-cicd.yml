@@ -36,7 +36,6 @@ jobs:
 
 
   build-and-deploy:
-    needs: test
     if: (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')) || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
@@ -51,6 +50,7 @@ jobs:
       - name: Install dependencies & EAS CLI
         run: |
           yarn install --frozen-lockfile
+
           yarn global add eas-cli@latest
 
       - name: Verify EAS CLI
