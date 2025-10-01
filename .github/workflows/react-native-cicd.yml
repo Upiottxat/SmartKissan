@@ -60,8 +60,9 @@ jobs:
       - name: Build Dev APK
         if: github.event.inputs.buildType == 'all' || github.event.inputs.buildType == 'dev' || github.event_name == 'push'
         run: |
-          export NODE_OPTIONS="--openssl-legacy-provider --max_old_space_size=4096"
-          eas build --platform android --profile development --local --non-interactive --output=app-dev.apk
+          echo "Dev build is currently disabled."
+          # export NODE_OPTIONS="--openssl-legacy-provider --max_old_space_size=4096"
+          # eas build --platform android --profile development --local --non-interactive --output=app-dev.apk
         env:
           NODE_ENV: development
 
