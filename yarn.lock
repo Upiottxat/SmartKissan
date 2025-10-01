@@ -3932,6 +3932,13 @@ expo-av@~16.0.7:
   resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-16.0.7.tgz#51668b335e3a460ca712a281d7138341119ebe26"
   integrity sha512-QReef6/RYuZ4GekTcZZw5zY26pcPOmHqK6LMgFlPhnsT0ga97HJrgMc63pvIiojDP+q4oIv24g+QPD8ljZu4XQ==
 
+expo-background-task@~1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/expo-background-task/-/expo-background-task-1.0.8.tgz#d1d1a3788d0055b780343cdbd0fb3563c4bebb2f"
+  integrity sha512-G6WnljBhO0K9j0ntmytF5rZLtYUpwh8n2+hcgmxM1ISPAVVZSPHZhkF9YjBOKpdPWZxmukBgEwejfcGckb8TQQ==
+  dependencies:
+    expo-task-manager "~14.0.7"
+
 expo-camera@~17.0.8:
   version "17.0.8"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-17.0.8.tgz#f00cd97b59fce4db33d121cc0d6bccdc377283ed"
@@ -4115,7 +4122,7 @@ expo-system-ui@^6.0.7:
     "@react-native/normalize-colors" "0.81.4"
     debug "^4.3.2"
 
-expo-task-manager@~14.0.6:
+expo-task-manager@~14.0.6, expo-task-manager@~14.0.7:
   version "14.0.7"
   resolved "https://registry.yarnpkg.com/expo-task-manager/-/expo-task-manager-14.0.7.tgz#87d89ec73a85d973626be0c363bfa24ba9c4998c"
   integrity sha512-wZRksJg4+Me1wDYmv0wnGh5I30ZOkEpjdXECp/cTKbON1ISQgnaz+4B2eJtljvEPYC1ocBdpAGmz9N0CPtc4mg==
