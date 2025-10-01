@@ -1,0 +1,279 @@
+! version = 2.0
+
+// +---------------------------------------------------+
+// | Bot Variables & Substitutions                     |
+// +---------------------------------------------------+
+
+! var name = Krishimitra
+! var crop = undefined
+
+// Substitutions to normalize user input
+! sub whats = what is
+! sub what's = what is
+! sub hows = how is
+! sub how's = how is
+! sub whens = when is
+! sub when's = when is
+! sub fertilizer = fertiliser
+! sub kg = kilogram
+! sub water = irrigate
+! sub watering = irrigation
+! sub i want to know about = tell me about
+! sub advice on = tell me about
+
+// +---------------------------------------------------+
+// | Greetings, Farewells & Basic Chat                 |
+// +---------------------------------------------------+
+
++ hello
+- Namaste! I'm Krishimitra, your friend and guide for all things farming. How can I help you today?
+- Greetings, friend! I'm Krishimitra, ready to help you with your crops. What are we looking at today?
+- Hello! Krishimitra here, your go-to expert. Tell me what's on your mind.
+
++ hi
+- <call>hello</call>
+
++ hey
+- <call>hello</call>
+
++ good morning
+- Good morning! I hope you have a productive day on the farm. What can I help you with?
+
++ bye
+- Alright, take care! Wishing you a great harvest. Happy farming!
+- Goodbye for now. Remember, I'm always here if you need any more advice. All the best!
+- Stay well and may your harvest be a bountiful one! Talk to you later.
+
++ thanks
+- Of course! Happy to help a fellow farmer.
+- Anytime! That's what I'm here for.
+- It's my pleasure. Let me know if anything else comes up.
+
++ thank you
+- <call>thanks</call>
+
++ what is your name
+- My name is Krishimitra, your friend in the field!
+
++ what can you do
+- Think of me as your personal agriculture expert! I can help you with:
+^ - Fertilizer application for various crops (Wheat, Rice, Maize, Cotton, Sugarcane, Potato).
+^ - Irrigation schedules and methods.
+^ - Identifying and managing common pests and diseases.
+^ - Sowing times and techniques.
+^ - Weed control strategies.
+^ - Harvesting and post-harvest care.
+^ Just ask me something like "what fertilizer for wheat?" or "tell me about pests in cotton".
+
++ help
+- <call>what can you do</call>
+
+// +---------------------------------------------------+
+// | Setting the Crop Context                          |
+// +---------------------------------------------------+
+
++ tell me about *
+- Excellent, <star> is a great crop. Let's dive in. Are we talking about fertilizer, water, pests, or something else?<set crop=<star>>
+
++ i have a question about *
+- <call>tell me about <star></call>
+
+// +---------------------------------------------------+
+// | Fertilizer Advice                               |
+// +---------------------------------------------------+
+
++ what fertilizer for *
+- Right, for <star>, the fertilizer strategy changes with the growth stage. Tell me, is it in the early, mid, or late stage? Getting this right is key.<set crop=<star>>
+
++ fertilizer for *
+- <call>what fertilizer for <star></call>
+
++ (early|mid|late) stage fertilizer for *
+- {@<star> <star1> fertilizer}
+
+// --- FERTILIZER: Context-aware replies ---
++ what about fertilizer
+* <get crop> == undefined => I need to know the crop first. For example, "what fertilizer for wheat?"
+- For <get crop>, at what stage is the crop? Early, mid, or late?
+
++ (early|mid|late) stage
+* <get crop> == undefined => Which crop are you asking about?
+- {@<get crop> <star> fertilizer}
+
+// --- FERTILIZER: WHEAT ---
++ * wheat early * fertilizer
+- For wheat in the early (tillering) stage, apply a basal dose of 50kg Urea, 50kg DAP, and 25kg MOP per acre. This provides essential nitrogen for leafy growth.
+
++ * wheat mid * fertilizer
+- For wheat in the mid (booting) stage, apply a top dressing of 40-50kg Urea per acre after the first irrigation. This supports grain development.
+
++ * wheat late * fertilizer
+- For wheat in the late (grain filling) stage, a foliar spray of 0:52:34 (NPK) at 1kg/acre can improve grain quality and weight. Avoid excessive nitrogen at this stage.
+
+// --- FERTILIZER: RICE ---
++ * rice early * fertilizer
+- For rice in the early (transplanting/tillering) stage, apply 30kg Urea, 50kg SSP (Single Super Phosphate), and 20kg MOP per acre as a basal dose.
+
++ * rice mid * fertilizer
+- For rice in the mid (panicle initiation) stage, apply a top dressing of 30-40kg Urea per acre. This is crucial for healthy grain formation.
+
++ * rice late * fertilizer
+- For rice in the late (flowering/milking) stage, you can use a foliar spray of Potassium Nitrate (13:0:45) at 1.5kg/acre to improve grain filling and reduce lodging.
+
+// --- FERTILIZER: MAIZE / CORN ---
++ * (maize|corn) early * fertilizer
+- For maize in the early stage (up to 25 days), apply a basal dose of 40kg Urea, 60kg DAP, and 30kg MOP per acre. Ensure good soil moisture.
+
++ * (maize|corn) mid * fertilizer
+- For maize in the mid (knee-high) stage, apply a side dressing of 50kg Urea per acre. This nitrogen boost is critical for tassel and silk development.
+
++ * (maize|corn) late * fertilizer
+- For maize in the late (silking/grain fill) stage, a final top dressing of 30-40kg Urea can be applied if the crop looks deficient. Also, consider zinc sulphate if you see white bud symptoms.
+
+// --- FERTILIZER: COTTON ---
++ * cotton early * fertilizer
+- For cotton in the early (seedling) stage, apply a basal dose of 25kg Urea, 50kg DAP, and 25kg MOP per acre.
+
++ * cotton mid * fertilizer
+- For cotton in the mid (flowering/squaring) stage, apply a top dressing of 40kg Urea per acre. A foliar spray of Magnesium Sulphate can prevent reddening of leaves.
+
++ * cotton late * fertilizer
+- For cotton in the late (boll development) stage, a foliar spray of NPK 19:19:19 and Boron is recommended to improve boll weight and fiber quality.
+
+// +---------------------------------------------------+
+// | Irrigation / Watering Advice                      |
+// +---------------------------------------------------+
+
++ how often to (water|irrigate) *
+- Ah, watering <star>. It's a bit of an art! It really depends on the growth stage, your soil, and the weather. Here are the general expert guidelines:<set crop=<star>>\n{@<star> irrigation general}
+
++ irrigation for *
+- <call>how often to irrigate <star></call>
+
+// --- IRRIGATION: Context-aware replies ---
++ what about irrigation
+* <get crop> == undefined => I need to know the crop first. For example, "irrigation for rice?"
+- {@<get crop> irrigation general}
+
+// --- IRRIGATION: DETAILS ---
++ * wheat * irrigation *
+- Wheat requires irrigation at critical stages: Crown Root Initiation (20-25 days after sowing), Tillering (40-45 days), Booting (70-75 days), and Grain Filling (90-95 days). Typically, irrigate every 15-20 days depending on soil moisture.
+
++ * rice * irrigation *
+- Rice fields (paddy) should ideally be kept flooded with 2-5 cm of water throughout the vegetative growth phase. Drain the field about 10-15 days before harvesting to allow for drying.
+
++ * (maize|corn) * irrigation *
+- Maize is sensitive to water stress. Irrigate at the early vegetative stage, knee-high stage, tasseling/silking stage (most critical), and grain filling stage. Drip irrigation is highly effective.
+
++ * cotton * irrigation *
+- Cotton needs light irrigation in the early stages. Increase frequency during the flowering and boll development stages. Avoid waterlogging, as cotton is very sensitive to it. Drip or furrow irrigation is recommended.
+
++ * sugarcane * irrigation *
+- Sugarcane is a water-intensive crop. It needs frequent irrigation, especially during the formative phase (first 120 days). In summer, this could be every 7-10 days.
+
++ * potato * irrigation *
+- Potatoes need consistent moisture. Irrigate every 5-7 days. Water stress during the tuber formation stage can severely reduce yield. Stop irrigation 10 days before harvesting.
+
+// +---------------------------------------------------+
+// | Pest & Disease Management                         |
+// +---------------------------------------------------+
+
++ what about disease *
+- I'm sorry to hear there might be a disease issue with your <star>. To figure this out, I need you to be my eyes. Tell me, what symptoms are you seeing? Any spots, wilting, or yellowing leaves?<set crop=<star>>
+
++ * has a disease
+- <call>what about disease <star></call>
+
++ what about pests
+* <get crop> == undefined => Which crop are you concerned about?
+- Pests can be a real headache. For <get crop>, we usually watch out for {@<get crop> pests}. Are you seeing any specific damage, like chewed leaves or webs?
+
+// --- PEST & DISEASE: SYMPTOMS ---
+
++ * (spots|lesions) on * leaves
+- Spots on <star1> leaves could be a sign of a fungal or bacterial infection. For example:\nWheat: Could be Rust or Septoria leaf blotch.\nRice: Could be Blast or Brown Spot.\nPotato/Tomato: Could be Early or Late Blight.\nMy recommendation would be to spray a fungicide like Mancozeb or Copper Oxychloride. If you prefer an organic solution, a neem oil spray is a good option.
+
++ * leaves are (yellow|yellowing)
+- Yellowing leaves can point to a nutrient deficiency (like Nitrogen or Iron) or a disease. If the yellowing is uniform, it's likely a nutrient issue; try applying Urea. If it's patchy or in a mosaic pattern, it could be a viral disease like Yellow Mosaic Virus, often spread by whiteflies. To control the virus, you have to control the insects.
+
++ my plants are (wilting|drooping)
+- Wilting can be caused by water stress (too little water) or a soil-borne fungal disease like Fusarium Wilt or Verticillium Wilt, which block the plant's water-carrying tissues. Check soil moisture first. If the soil is moist but plants are still wilting, it is likely a fungal wilt. Drenching the soil with Carbendazim can help. Crop rotation is the best long-term prevention.
+
++ * (whiteflies|aphids|jassids|thrips) on my *
+- These are sucking pests. They weaken the plant and can transmit viruses. For chemical control, you can spray Imidacloprid or Acetamiprid. For an organic approach, use strong jets of water to dislodge them, introduce ladybugs, or spray with insecticidal soap or neem oil.
+
++ * (caterpillars|worms|borers) eating *
+- These are chewing pests. For Stem Borers in rice or sugarcane, or Fruit Borers in cotton or tomato, you can use insecticides like Chlorantraniliprole. Pheromone traps can help monitor and trap adult moths. Organic control includes hand-picking or using Bacillus thuringiensis (Bt) spray.
+
+// --- PESTS: CROP-SPECIFIC LISTS ---
++ * wheat pests
+- Common pests in wheat are Aphids, Termites (in dry areas), and rodents.
+
++ * rice pests
+- Major pests in rice include Stem Borer, Leaf Folder, Brown Plant Hopper (BPH), and Gall Midge.
+
++ * cotton pests
+- Cotton is attacked by many pests, notably Pink Bollworm, American Bollworm, Whitefly, Aphids, and Jassids.
+
+// +---------------------------------------------------+
+// | Sowing, Weeding, and Harvesting                   |
+// +---------------------------------------------------+
+
++ when to (plant|sow) *
+- Timing is everything when sowing <star>. It varies with the local climate and the specific variety you're using, but as a rule of thumb:\n{@<star> sowing time}
+
++ * sowing time
+- <call>when to sow <star></call>
+
++ * weeding
+- We've got to stay on top of weeds for <star>, they can really hurt the yield. You can tackle them by hand or with herbicides. If you want to get ahead of them, a pre-emergence solution like {@<star> herbicide} is a good strategy.
+
++ when to harvest *
+- Knowing when to harvest <star> is crucial for getting the best quality and yield. You'll know it's ready when you see these signs: {@<star> harvest signs}.
+
+// --- SOWING/WEEDING/HARVESTING DETAILS ---
+
++ * wheat sowing time
+- For wheat, the ideal time is from late October to the first half of November. Delaying can reduce the yield.
+
++ * wheat herbicide
+- For broad-leaf weeds in wheat, use herbicides like 2,4-D. For grassy weeds like Phalaris minor, Clodinafop is effective.
+
++ * wheat harvest signs
+- Wheat is ready for harvest when the grains are hard and the straw is dry and brittle. The moisture content should be below 12%.
+
++ * rice sowing time
+- For Kharif (monsoon) rice, transplanting is done from June to July. For Rabi (winter) rice, it's November to December.
+
++ * rice herbicide
+- For weeds in rice, you can use a pre-emergence herbicide like Pretilachlor or a post-emergence one like Bispyribac Sodium.
+
++ * rice harvest signs
+- Rice is ready when 80-85% of the panicles have turned golden yellow.
+
+// +---------------------------------------------------+
+// | General Knowledge Base                            |
+// +---------------------------------------------------+
+
++ what is dap
+- Good question! DAP stands for Di-Ammonium Phosphate. It is a widely used fertilizer that is an excellent source of both Phosphorus (P) and Nitrogen (N) for plants.
+
++ what is mop
+- MOP stands for Muriate of Potash, also known as Potassium Chloride. It's a very common fertilizer used to supply Potassium (K) to crops. Potassium is really important for overall plant health, disease resistance, and fruit or grain quality.
+
++ what is npk
+- NPK stands for Nitrogen (N), Phosphorus (P), and Potassium (K). These are the three main building blocks, or macronutrients, that plants need to thrive. Fertilizer grades are often written as three numbers, like 19:19:19, which tells you the percentage of N, P, and K in the bag.
+
++ what is crop rotation
+- That's a great farming practice! Crop rotation is when you plant different crops on the same piece of land in a sequence. This helps improve soil health, balances nutrient levels, and naturally breaks the life cycles of many pests and weeds. For instance, planting a legume like soybean after a cereal like maize is a classic way to put nitrogen back into the soil.
+
+// +---------------------------------------------------+
+// | Fallback / Catch-all Trigger                      |
+// +---------------------------------------------------+
+
++ *
+- Apologies, I didn't quite catch that. Could you try asking in a different way?
+- Hmm, I'm not sure about that one. My expertise is in crop management.
+- Could you please rephrase that? Remember, I'm best at answering questions about fertilizer, irrigation, and pests for crops like wheat, rice, and maize.
+- My knowledge is focused on farming advice. Try asking me something like "when should I harvest cotton?" or "what are common diseases in potato?"
+
