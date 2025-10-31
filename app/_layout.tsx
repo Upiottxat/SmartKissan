@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    Runtime: require('../assets/fonts/Runtime-Regular.ttf'),
+    Runtime: require('../assets/fonts/Runtime-Regular.otf'),
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
