@@ -1,6 +1,6 @@
 import { StorageContext } from '@/Context/StorageContext';
 import { Ionicons } from '@expo/vector-icons';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   ScrollView,
@@ -8,10 +8,11 @@ import {
   Switch,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 
 
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import EditScreenInfo from '../EditScreenInfo';
 interface Achievement {
@@ -59,6 +60,14 @@ interface Activity {
 
 export default function ProfileModel() {
   const { userBasicInfo } = useContext(StorageContext) ?? {};
+  const [user, setuser] = useState(null);
+  const router=useRouter();
+useEffect(()=>{
+  if(!user){
+    router.replace('/SignIn');
+  }
+},[user])
+
   if (!userBasicInfo) {
     // You can render a loading state or fallback UI here
     return (
