@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Image,
   StatusBar,
@@ -9,11 +9,10 @@ import {
   View
 } from 'react-native';
 
+
 const SignIn = () => {
 
-    useEffect(()=>{
 
-    },[])
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
