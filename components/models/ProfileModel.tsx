@@ -64,7 +64,7 @@ export default function ProfileModel() {
   const router=useRouter();
 useEffect(()=>{
   if(!user){
-    router.replace('/SignIn');
+    return router.push('/SignIn');
   }
 },[user])
 

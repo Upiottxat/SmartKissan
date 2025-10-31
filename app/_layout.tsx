@@ -48,7 +48,7 @@ export default function RootLayout() {
               <Stack.Screen name="index" />
               <Stack.Screen name="(tabs)" />
               <Stack.Screen name="+not-found" />
-              <Stack.Screen name="SignIn" />
+              <Stack.Screen name="SignIn"  options={{headerShown:true,headerTitle:"Let's get started"}} />
             </Stack>
           </ThemeProvider>
         </SafeAreaProvider>
