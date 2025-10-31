@@ -22,12 +22,14 @@ const queryClient = new QueryClient({
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
+    Runtime: require('../assets/fonts/Runtime-Regular.ttf'),
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
-  useEffect(()=>{
-    NavigationBar.setVisibilityAsync('hidden'); 
-    NavigationBar.setBackgroundColorAsync('#676767'); 
-  })
+
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync('hidden');
+    NavigationBar.setBackgroundColorAsync('#676767');
+  }, []);
 
   if (!loaded) return null;
 
@@ -46,6 +48,7 @@ export default function RootLayout() {
               <Stack.Screen name="index" />
               <Stack.Screen name="(tabs)" />
               <Stack.Screen name="+not-found" />
+              <Stack.Screen name="SignIn" />
             </Stack>
           </ThemeProvider>
         </SafeAreaProvider>

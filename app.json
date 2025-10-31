@@ -13,6 +13,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -58,7 +61,6 @@
     "plugins": [
       "expo-router",
       "expo-background-task"
-
     ],
     "experiments": {
       "typedRoutes": true
